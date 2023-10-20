@@ -1,8 +1,17 @@
 import './App.css';
-//import Q from './audio/audioData';
+import React, { useEffect } from 'react';
 import { Q, W, E, A, S, D, Z, X, C } from './audio/audioData';
+import { handleAudio } from './audio/hendleAudio';
 
 function App() {
+  
+  useEffect(() => {
+    document.addEventListener('keydown', handleAudio);
+    return () => {
+      document.removeEventListener('keydown', handleAudio);
+    };
+  }, []);
+
   return (
     <div className="App">
 hi me
