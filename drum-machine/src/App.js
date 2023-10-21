@@ -1,54 +1,79 @@
 import './App.css';
 import React, { useEffect } from 'react';
 import { Q, W, E, A, S, D, Z, X, C } from './audio/audioData';
-import { handleAudio } from './audio/hendleAudio';
+
+
+const playAudio = (id) => {
+  const audio = document.getElementById(id);
+  audio.currentTime = 0;
+  audio.play();
+}; 
 
 function App() {
   
   useEffect(() => {
-    document.addEventListener('keydown', handleAudio);
-    return () => {
-      document.removeEventListener('keydown', handleAudio);
-    };
-  }, []);
+      const handleKeyPress = (event) => {
+        const key = event.key.toUpperCase();
+        const audio = document.getElementById(key);
+      
+        if (audio) {
+          audio.load();
+          audio.currentTime = 0;
+          audio.play().catch((error) => {
+            console.error('Playback failed because: ', error);
+          });
+        } else {
+          console.error('No audio element found with id: ', key);
+        }
+      
+     };
+
+     document.addEventListener('keydown', handleKeyPress);
+     return () => {
+       document.removeEventListener('keydown', handleKeyPress);
+     };
+
+
+  }, []); 
 
   return (
     <div className="App">
-hi me
+      <h2>Drum Machine</h2>
       <div id="display"></div>
-      <button className="drum-pad" id="clip1">
+
+      <button onClick={() => playAudio('Q')} className="drum-pad" id="clip1">
         <Q />
         Q
       </button>
-      <button className="drum-pad" id="clip2">
+      <button onClick={() => playAudio('W')} className="drum-pad" id="clip2">
         <W />
         W
       </button>
-      <button className="drum-pad" id="clip3">
+      <button onClick={() => playAudio('E')} className="drum-pad" id="clip3">
         <E />
         E
       </button>
-      <button className="drum-pad" id="clip4">
+      <button onClick={() => playAudio('A')} className="drum-pad" id="clip4">
         <A />
         A
       </button>
-      <button className="drum-pad" id="clip5">
+      <button onClick={() => playAudio('S')} className="drum-pad" id="clip5">
         <S />
         S
       </button>
-      <button className="drum-pad" id="clip6">
+      <button onClick={() => playAudio('D')} className="drum-pad" id="clip6">
         <D />
         D
       </button>
-      <button className="drum-pad" id="clip7">
+      <button onClick={() => playAudio('Z')} className="drum-pad" id="clip7">
         <Z />
         Z
       </button>
-      <button className="drum-pad" id="clip8">
+      <button onClick={() => playAudio('X')} className="drum-pad" id="clip8">
         <X />
         X
       </button>
-      <button className="drum-pad" id="clip9">
+      <button onClick={() => playAudio('C')} className="drum-pad" id="clip9">
         <C/>
         C
       </button>
