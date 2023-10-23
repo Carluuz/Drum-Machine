@@ -73,7 +73,9 @@ function App() {
         C
       </button>
       <br />
-      <div id="display" className='btn'>{displayText}</div>
+      <div id="display" className='card my-3'>
+        Notes: {displayText}
+      </div>
 
     </div>
   );
