@@ -72,7 +72,7 @@ function App() {
         <C/>
         C
       </button>
-
+      <br />
       <div id="display" className='btn'>{displayText}</div>
 
     </div>
