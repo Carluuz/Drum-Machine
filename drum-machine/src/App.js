@@ -19,14 +19,8 @@ function App() {
         const audio = document.getElementById(key);
         if (audio) {
           setDisplayText(`${key}`);
-           audio.play()
+          playAudio(key)
         }
-        // if (audio) {
-        //   audio.currentTime = 0;
-        //   setTimeout(function () {      
-        //     audio.play();
-        //   }, 150);
-        // }
               
      };
 
@@ -79,7 +73,7 @@ function App() {
         C
       </button>
 
-      <div id="display">{displayText}</div>
+      <div id="display" className='btn'>{displayText}</div>
 
     </div>
   );
